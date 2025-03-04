@@ -1,0 +1,59 @@
+Component Home_Work_1_tb()
+{
+    SIGNAL finished : STD_LOGIC:= '0';
+    CONSTANT period_time : TIME := 83333 ps;
+
+    Process Sim_finished()
+    {
+        wait for 1000000 us;
+        finished <= '1';
+        wait;
+    }
+
+    NewComponent Home_Work_1
+    (
+        a => a,
+        b => b,
+        c => c,
+        o => o,
+        z => z,
+    );
+
+    SIGNAL a : bit ;
+    SIGNAL b : bit ;
+    SIGNAL c : bit ;
+    SIGNAL o : BIT ;
+    SIGNAL z : BIT ;
+
+
+    Process Sim_a()
+    {
+        While(finished /= '1')
+        {
+            a <= '1';
+            wait for 1000 ms;
+            a <= '0';
+            wait for 1000 ms;
+            
+        }
+        wait;
+    }
+
+    Process Sim_b()
+    {
+        While(finished /= '1')
+        {
+            wait;
+        }
+        wait;
+    }
+
+    Process Sim_c()
+    {
+        While(finished /= '1')
+        {
+            wait;
+        }
+        wait;
+    }
+}
